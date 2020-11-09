@@ -1,0 +1,69 @@
+<textarea></textarea>
+<button>提交</button>
+<ul></ul>
+
+<style>
+    textarea{
+        width:300px;
+        height:200px;
+        border:1px solid black;
+        resize: none;
+    }
+
+    button{
+        width:50px;
+        height:30px;
+        text-align: center;
+        color:darkblue;
+        background-color:pink;
+        border:1px solid black;
+    }
+
+    ul{
+        margin-top:50px;
+    }
+
+    li{
+        width:250px;
+        background-color:gray;
+        color:darkblue;
+        margin:15px 0;
+        padding:5px;
+        font-size:10px;
+    }
+
+    li a{
+        float:right;
+        width:40px;
+        height:20px;
+        font-size:10px;
+        background-color:pink;
+        color:red;
+        text-align:center;
+    }
+</style>
+
+
+<script>
+    var text = document.querySelector("textarea");
+    var btn = document.querySelector("button");
+    var ul = document.querySelector("ul");
+
+    btn.onclick = function(){
+        if (text.value == ''){
+            return false;
+        }
+        else{
+            var li = document.createElement("li");
+            li.innerHTML = text.value + '<a href="javascript:;" rel="external nofollow" >删除</a>';
+            ul.appendChild(li);
+
+            var as = document.querySelectorAll('a');
+            for (var i = 0; i < as.length; i++){
+                as[i].onclick = function(){
+                    ul.removeChild(this.parentNode);
+                }
+            }
+        }
+    }
+</script>
